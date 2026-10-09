@@ -1,10 +1,6 @@
 # Sysadmin labs
 
-Tools, modules and plugins from a sysadmin's daily work: web servers, mail,
-identity and everything around them. Where an upstream went quiet or a gap
-needs closing, it gets fixed, tested and released here.
-
-Built and tested on **FreeBSD and Linux**.
+Tools, modules and plugins for sysadmins.
 
 ## nginx modules
 
