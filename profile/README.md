@@ -4,14 +4,15 @@ Modules for nginx, built and tested on FreeBSD and Linux.
 
 ## nginx modules
 
-Thirteen dynamic modules.  They all carry the same checks: the release matrix
-of nginx versions, a FreeBSD virtual machine, address and undefined
-behaviour sanitizers, valgrind, CodeQL, shellcheck and actionlint.  Most add
-eight reloads in a row and one gate that belongs to that module alone, from
-a hostile client to a collector that takes its datagrams apart —
-`nginx-fips-check-module` has neither, because it allocates nothing per
-cycle and answers no request, so there would be nothing for either to
-measure.
+Fourteen repositories, fifteen modules -- `nginx-sts-module` ships two, one
+for each subsystem it works in.  They all carry the same checks: the
+release matrix of nginx versions, a FreeBSD virtual machine, address and
+undefined behaviour sanitizers, valgrind, CodeQL, shellcheck and
+actionlint.  Most add eight reloads in a row and one gate that belongs to
+that module alone, from a hostile client to a collector that takes its
+datagrams apart — `nginx-fips-check-module` has neither, because it
+allocates nothing per cycle and answers no request, so there would be
+nothing for either to measure.
 
 | Module | What it does |
 |---|---|
@@ -26,6 +27,7 @@ measure.
 | [nginx-redis2-module](https://github.com/sysadmin-labs/nginx-redis2-module) | Sends commands to Redis and answers with the raw reply |
 | [nginx-sflow-module](https://github.com/sysadmin-labs/nginx-sflow-module) | Samples requests and sends them as sFlow datagrams |
 | [nginx-slowfs-cache-module](https://github.com/sysadmin-labs/nginx-slowfs-cache-module) | Caches files served from a slow filesystem onto a fast one |
+| [nginx-sts-module](https://github.com/sysadmin-labs/nginx-sts-module) | Counts what goes through the `stream` subsystem and serves the counters as JSON, a Prometheus exposition or an HTML dashboard |
 | [nginx-websockify-module](https://github.com/sysadmin-labs/nginx-websockify-module) | Bridges a WebSocket to a plain TCP service, a VNC server for example |
 | [nginx-zstd-module](https://github.com/sysadmin-labs/nginx-zstd-module) | Zstandard: an output filter, and a server for precompressed `.zst` files |
 
