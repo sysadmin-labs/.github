@@ -4,7 +4,7 @@ Modules for nginx, built and tested on FreeBSD and Linux.
 
 ## nginx modules
 
-Twelve dynamic modules.  They all carry the same checks: the release matrix
+Thirteen dynamic modules.  They all carry the same checks: the release matrix
 of nginx versions, a FreeBSD virtual machine, address and undefined
 behaviour sanitizers, valgrind, CodeQL, shellcheck and actionlint.  Most add
 eight reloads in a row and one gate that belongs to that module alone, from
@@ -15,6 +15,7 @@ measure.
 
 | Module | What it does |
 |---|---|
+| [nginx-accept-language-module](https://github.com/sysadmin-labs/nginx-accept-language-module) | Picks a language for the request out of `Accept-Language`, weights respected, into a variable |
 | [nginx-fips-check-module](https://github.com/sysadmin-labs/nginx-fips-check-module) | Reports whether the OpenSSL nginx is linked against runs in FIPS mode, and stops a worker that disagrees |
 | [nginx-form-input-module](https://github.com/sysadmin-labs/nginx-form-input-module) | Parses `application/x-www-form-urlencoded` request bodies into nginx variables |
 | [nginx-gridfs-module](https://github.com/sysadmin-labs/nginx-gridfs-module) | Serves files out of MongoDB GridFS, byte ranges included |
