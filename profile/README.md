@@ -4,14 +4,18 @@ Modules for nginx, built and tested on FreeBSD and Linux.
 
 ## nginx modules
 
-Eleven dynamic modules.  Every one of them has the same checks: the release
-matrix of nginx versions, a FreeBSD virtual machine, address and undefined
-behaviour sanitizers, valgrind, eight reloads in a row, CodeQL, shellcheck
-and actionlint — and one more that belongs to that module alone, from a
-hostile client to a collector that takes its datagrams apart.
+Twelve dynamic modules.  They all carry the same checks: the release matrix
+of nginx versions, a FreeBSD virtual machine, address and undefined
+behaviour sanitizers, valgrind, CodeQL, shellcheck and actionlint.  Most add
+eight reloads in a row and one gate that belongs to that module alone, from
+a hostile client to a collector that takes its datagrams apart —
+`nginx-fips-check-module` has neither, because it allocates nothing per
+cycle and answers no request, so there would be nothing for either to
+measure.
 
 | Module | What it does |
 |---|---|
+| [nginx-fips-check-module](https://github.com/sysadmin-labs/nginx-fips-check-module) | Reports whether the OpenSSL nginx is linked against runs in FIPS mode, and stops a worker that disagrees |
 | [nginx-form-input-module](https://github.com/sysadmin-labs/nginx-form-input-module) | Parses `application/x-www-form-urlencoded` request bodies into nginx variables |
 | [nginx-gridfs-module](https://github.com/sysadmin-labs/nginx-gridfs-module) | Serves files out of MongoDB GridFS, byte ranges included |
 | [nginx-iconv-module](https://github.com/sysadmin-labs/nginx-iconv-module) | Converts between character encodings with `iconv(3)`: a value into a variable, or a whole response body |
@@ -47,6 +51,6 @@ interest and are not tested here yet.
 ## License
 
 Each module carries the licence of its own code, and the `LICENSE` in its
-repository is the one that applies — three of them are not BSD, because
+repository is the one that applies — four of them are not BSD, because
 their authors chose otherwise.  What was written here, including the build
 and test scaffolding, is BSD 2-Clause.
