@@ -20,6 +20,7 @@ nothing for either to measure.
 | [nginx-auth-ldap-module](https://github.com/sysadmin-labs/nginx-auth-ldap-module) | Authenticates HTTP basic credentials against an LDAP directory, with group requirements, a connection pool and an answer cache |
 | [nginx-cert-expiry-module](https://github.com/sysadmin-labs/nginx-cert-expiry-module) | Warns in the error log before a TLS certificate expires, with a variable for the days left |
 | [nginx-fips-check-module](https://github.com/sysadmin-labs/nginx-fips-check-module) | Reports whether the OpenSSL nginx is linked against runs in FIPS mode, and stops a worker that disagrees |
+| [nginx-footer-module](https://github.com/sysadmin-labs/nginx-footer-module) | Appends text to a response body, built from variables, for the content types you name |
 | [nginx-form-input-module](https://github.com/sysadmin-labs/nginx-form-input-module) | Parses `application/x-www-form-urlencoded` request bodies into nginx variables |
 | [nginx-gridfs-module](https://github.com/sysadmin-labs/nginx-gridfs-module) | Serves files out of MongoDB GridFS, byte ranges included |
 | [nginx-iconv-module](https://github.com/sysadmin-labs/nginx-iconv-module) | Converts between character encodings with `iconv(3)`: a value into a variable, or a whole response body |
