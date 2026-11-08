@@ -4,7 +4,7 @@ Modules for nginx, built and tested on FreeBSD and Linux.
 
 ## nginx modules
 
-Nineteen repositories, twenty modules -- `nginx-sts-module` ships two, one
+Twenty repositories, twenty-one modules -- `nginx-sts-module` ships two, one
 for each subsystem it works in.  They all carry the same checks: the
 release matrix of nginx versions, a FreeBSD virtual machine, address and
 undefined behaviour sanitizers, valgrind, CodeQL, shellcheck and
@@ -28,6 +28,7 @@ nothing for either to measure.
 | [nginx-json-status-module](https://github.com/sysadmin-labs/nginx-json-status-module) | Reports the connection and request counters and every upstream as one JSON object |
 | [nginx-let-module](https://github.com/sysadmin-labs/nginx-let-module) | Evaluates an arithmetic or string expression into a variable |
 | [nginx-postgres-module](https://github.com/sysadmin-labs/nginx-postgres-module) | Queries PostgreSQL directly and answers with text, JSON or a status code |
+| [nginx-redis-module](https://github.com/sysadmin-labs/nginx-redis-module) | Fetches one key from Redis with a single GET and serves the value as the response body |
 | [nginx-redis2-module](https://github.com/sysadmin-labs/nginx-redis2-module) | Sends commands to Redis and answers with the raw reply |
 | [nginx-sflow-module](https://github.com/sysadmin-labs/nginx-sflow-module) | Samples requests and sends them as sFlow datagrams |
 | [nginx-slowfs-cache-module](https://github.com/sysadmin-labs/nginx-slowfs-cache-module) | Caches files served from a slow filesystem onto a fast one |
