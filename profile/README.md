@@ -4,7 +4,7 @@ Modules for nginx, built and tested on FreeBSD and Linux.
 
 ## nginx modules
 
-Twenty-six repositories, twenty-seven modules -- `nginx-sts-module` ships two, one
+Twenty-eight repositories, twenty-nine modules -- `nginx-sts-module` ships two, one
 for each subsystem it works in.  They all carry the same checks: the
 release matrix of nginx versions, a FreeBSD virtual machine, address and
 undefined behaviour sanitizers, valgrind, CodeQL, shellcheck and
@@ -20,6 +20,7 @@ nothing for either to measure.
 | [nginx-auth-ldap-module](https://github.com/sysadmin-labs/nginx-auth-ldap-module) | Authenticates HTTP basic credentials against an LDAP directory, with group requirements, a connection pool and an answer cache |
 | [nginx-cert-expiry-module](https://github.com/sysadmin-labs/nginx-cert-expiry-module) | Warns in the error log before a TLS certificate expires, with a variable for the days left |
 | [nginx-dav-ext-module](https://github.com/sysadmin-labs/nginx-dav-ext-module) | Adds the WebDAV methods nginx's own `dav` module leaves out: `PROPFIND`, `OPTIONS`, `LOCK` and `UNLOCK` |
+| [nginx-dynamic-upstream-module](https://github.com/sysadmin-labs/nginx-dynamic-upstream-module) | Adds and removes upstream peers at run time over an HTTP interface, and keeps them in step with DNS |
 | [nginx-fips-check-module](https://github.com/sysadmin-labs/nginx-fips-check-module) | Reports whether the OpenSSL nginx is linked against runs in FIPS mode, and stops a worker that disagrees |
 | [nginx-footer-module](https://github.com/sysadmin-labs/nginx-footer-module) | Appends text to a response body, built from variables, for the content types you name |
 | [nginx-form-input-module](https://github.com/sysadmin-labs/nginx-form-input-module) | Parses `application/x-www-form-urlencoded` request bodies into nginx variables |
@@ -40,6 +41,7 @@ nothing for either to measure.
 | [nginx-subs-filter-module](https://github.com/sysadmin-labs/nginx-subs-filter-module) | Rewrites the response body with string and regular-expression substitutions |
 | [nginx-syslog5424-module](https://github.com/sysadmin-labs/nginx-syslog5424-module) | Logs to syslog in the RFC 5424 format, with timestamp, message id and structured data |
 | [nginx-upload-module](https://github.com/sysadmin-labs/nginx-upload-module) | Receives multipart file uploads, resumable ones included, and hands the request on |
+| [nginx-upstream-check-module](https://github.com/sysadmin-labs/nginx-upstream-check-module) | Probes each backend on a timer and takes a failing one out of the balancer before a request lands on it |
 | [nginx-websockify-module](https://github.com/sysadmin-labs/nginx-websockify-module) | Bridges a WebSocket to a plain TCP service, a VNC server for example |
 | [nginx-zstd-module](https://github.com/sysadmin-labs/nginx-zstd-module) | Zstandard: an output filter, and a server for precompressed `.zst` files |
 
