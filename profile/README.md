@@ -4,26 +4,33 @@ Modules for nginx, built and tested on FreeBSD and Linux.
 
 ## nginx modules
 
-Twenty-eight repositories, twenty-nine modules -- `nginx-sts-module` ships two, one
-for each subsystem it works in.  They all carry the same checks: the
-release matrix of nginx versions, a FreeBSD virtual machine, address and
-undefined behaviour sanitizers, valgrind, CodeQL, shellcheck and
-actionlint.  Most add eight reloads in a row and one gate that belongs to
-that module alone, from a hostile client to a collector that takes its
-datagrams apart — `nginx-fips-check-module` has neither, because it
-allocates nothing per cycle and answers no request, so there would be
-nothing for either to measure.
+Thirty-five repositories, thirty-seven modules -- `nginx-sts-module` and
+`nginx-geoip2-module` each ship two, one for each subsystem they work in.
+
+They all carry the same checks: the release matrix of nginx versions, a
+FreeBSD virtual machine, address and undefined behaviour sanitizers,
+valgrind, CodeQL, shellcheck and actionlint.  Most add eight reloads in a
+row and one gate that belongs to that module alone, from a hostile client
+to a collector that takes its datagrams apart.  Three have no reload gate:
+`nginx-fips-check-module` allocates nothing per cycle and answers no
+request, so there would be nothing to measure, while `nginx-ajp-module` and
+`nginx-tarantool-module` would each need a stand-in for a binary protocol
+first.  Where a gate is missing it is missing, rather than present and
+passing on something it does not check.
 
 | Module | What it does |
 |---|---|
 | [nginx-accept-language-module](https://github.com/sysadmin-labs/nginx-accept-language-module) | Picks a language for the request out of `Accept-Language`, weights respected, into a variable |
+| [nginx-ajp-module](https://github.com/sysadmin-labs/nginx-ajp-module) | Proxies to Tomcat or Jetty over AJP, the binary connector protocol, keeping the connection |
 | [nginx-auth-ldap-module](https://github.com/sysadmin-labs/nginx-auth-ldap-module) | Authenticates HTTP basic credentials against an LDAP directory, with group requirements, a connection pool and an answer cache |
+| [nginx-auth-pam-module](https://github.com/sysadmin-labs/nginx-auth-pam-module) | Authenticates HTTP basic credentials against PAM, so a location opens to the accounts the system knows |
 | [nginx-cert-expiry-module](https://github.com/sysadmin-labs/nginx-cert-expiry-module) | Warns in the error log before a TLS certificate expires, with a variable for the days left |
 | [nginx-dav-ext-module](https://github.com/sysadmin-labs/nginx-dav-ext-module) | Adds the WebDAV methods nginx's own `dav` module leaves out: `PROPFIND`, `OPTIONS`, `LOCK` and `UNLOCK` |
 | [nginx-dynamic-upstream-module](https://github.com/sysadmin-labs/nginx-dynamic-upstream-module) | Adds and removes upstream peers at run time over an HTTP interface, and keeps them in step with DNS |
 | [nginx-fips-check-module](https://github.com/sysadmin-labs/nginx-fips-check-module) | Reports whether the OpenSSL nginx is linked against runs in FIPS mode, and stops a worker that disagrees |
 | [nginx-footer-module](https://github.com/sysadmin-labs/nginx-footer-module) | Appends text to a response body, built from variables, for the content types you name |
 | [nginx-form-input-module](https://github.com/sysadmin-labs/nginx-form-input-module) | Parses `application/x-www-form-urlencoded` request bodies into nginx variables |
+| [nginx-geoip2-module](https://github.com/sysadmin-labs/nginx-geoip2-module) | Reads MaxMind GeoIP2 and GeoLite2 databases into variables, for HTTP and for `stream` |
 | [nginx-gridfs-module](https://github.com/sysadmin-labs/nginx-gridfs-module) | Serves files out of MongoDB GridFS, byte ranges included |
 | [nginx-http-auth-digest](https://github.com/sysadmin-labs/nginx-http-auth-digest) | Authenticates requests with HTTP Digest, the RFC 2617 scheme, against a password file |
 | [nginx-iconv-module](https://github.com/sysadmin-labs/nginx-iconv-module) | Converts between character encodings with `iconv(3)`: a value into a variable, or a whole response body |
@@ -31,15 +38,19 @@ nothing for either to measure.
 | [nginx-json-status-module](https://github.com/sysadmin-labs/nginx-json-status-module) | Reports the connection and request counters and every upstream as one JSON object |
 | [nginx-let-module](https://github.com/sysadmin-labs/nginx-let-module) | Evaluates an arithmetic or string expression into a variable |
 | [nginx-link-function-module](https://github.com/sysadmin-labs/nginx-link-function-module) | Calls functions from a C library loaded at run time, request handling in native code |
+| [nginx-mogilefs-module](https://github.com/sysadmin-labs/nginx-mogilefs-module) | Asks a MogileFS tracker where a key lives and serves it from the storage node that has it, writes included |
 | [nginx-postgres-module](https://github.com/sysadmin-labs/nginx-postgres-module) | Queries PostgreSQL directly and answers with text, JSON or a status code |
+| [nginx-push-stream-module](https://github.com/sysadmin-labs/nginx-push-stream-module) | Server push out of nginx's own shared memory: long polling, EventSource and WebSocket channels |
 | [nginx-redis-module](https://github.com/sysadmin-labs/nginx-redis-module) | Fetches one key from Redis with a single GET and serves the value as the response body |
 | [nginx-redis2-module](https://github.com/sysadmin-labs/nginx-redis2-module) | Sends commands to Redis and answers with the raw reply |
+| [nginx-rtmp-module](https://github.com/sysadmin-labs/nginx-rtmp-module) | An RTMP server in nginx: live relay, recording, and the same stream again as HLS or MPEG-DASH |
 | [nginx-sflow-module](https://github.com/sysadmin-labs/nginx-sflow-module) | Samples requests and sends them as sFlow datagrams |
 | [nginx-slowfs-cache-module](https://github.com/sysadmin-labs/nginx-slowfs-cache-module) | Caches files served from a slow filesystem onto a fast one |
 | [nginx-stream-limit-req-module](https://github.com/sysadmin-labs/nginx-stream-limit-req-module) | Rate limits incoming connections in the `stream` subsystem: `limit_req` for TCP and UDP |
 | [nginx-sts-module](https://github.com/sysadmin-labs/nginx-sts-module) | Counts what goes through the `stream` subsystem and serves the counters as JSON, a Prometheus exposition or an HTML dashboard |
 | [nginx-subs-filter-module](https://github.com/sysadmin-labs/nginx-subs-filter-module) | Rewrites the response body with string and regular-expression substitutions |
 | [nginx-syslog5424-module](https://github.com/sysadmin-labs/nginx-syslog5424-module) | Logs to syslog in the RFC 5424 format, with timestamp, message id and structured data |
+| [nginx-tarantool-module](https://github.com/sysadmin-labs/nginx-tarantool-module) | Talks to a Tarantool database over its binary protocol and serves it as REST or JSON-RPC |
 | [nginx-upload-module](https://github.com/sysadmin-labs/nginx-upload-module) | Receives multipart file uploads, resumable ones included, and hands the request on |
 | [nginx-upstream-check-module](https://github.com/sysadmin-labs/nginx-upstream-check-module) | Probes each backend on a timer and takes a failing one out of the balancer before a request lands on it |
 | [nginx-websockify-module](https://github.com/sysadmin-labs/nginx-websockify-module) | Bridges a WebSocket to a plain TCP service, a VNC server for example |
