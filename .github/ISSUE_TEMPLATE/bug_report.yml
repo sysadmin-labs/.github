@@ -1,0 +1,85 @@
+name: Something is broken
+description: A module does not do what it should
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The fields below are the ones that decide whether this can be
+        reproduced. A report without them usually ends in a round of
+        questions, which is slower for both of us.
+
+  - type: input
+    id: module
+    attributes:
+      label: Module and version
+      description: The release, or the commit if you built from master.
+      placeholder: nginx-rtmp-module 1.3.0
+    validations:
+      required: true
+
+  - type: input
+    id: nginx
+    attributes:
+      label: nginx version
+      description: What `nginx -v` says. freenginx and Angie belong here too.
+      placeholder: nginx/1.30.6
+    validations:
+      required: true
+
+  - type: dropdown
+    id: linkage
+    attributes:
+      label: How was it built
+      description: >
+        This matters more than it looks. Faults have lived for years in
+        one of these two and not the other.
+      options:
+        - Built into the binary (--add-module)
+        - Loadable module (--add-dynamic-module, load_module)
+        - From a package, do not know which
+    validations:
+      required: true
+
+  - type: input
+    id: system
+    attributes:
+      label: Operating system and compiler
+      description: >
+        gcc and clang do not report the same things, so both matter.
+      placeholder: FreeBSD 15.1, clang 19
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration
+      description: >
+        Cut down to the smallest one that still shows it.
+      render: nginx
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What happened, and what you expected instead
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: What nginx logged
+      description: >
+        The lines around it, not a description of them. If it crashed, the
+        exit status or the signal is the first thing to look at — and note
+        that a pipeline hides it, so run the command on its own.
+      render: text
+
+  - type: textarea
+    id: anything
+    attributes:
+      label: Anything else
+      description: Optional.

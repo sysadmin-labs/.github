@@ -1,0 +1,30 @@
+name: A directive or behaviour is missing
+description: Something the module should be able to do and cannot
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do
+      description: >
+        The setup you are building, not the directive you have in mind.
+        There is often a way already, and if there is not, this is what
+        decides what the new one should look like.
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: What you do instead today
+      description: >
+        A workaround that exists and merely annoys is a different case
+        from something that cannot be done at all.
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: How you would shape it
+      description: >
+        Optional. A directive name, the context it would live in, what it
+        would take.

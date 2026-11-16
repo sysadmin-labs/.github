@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: A fault in the FreeBSD port, not in the module
+    url: https://bugs.freebsd.org/bugzilla/
+    about: >
+      If the module itself is fine and the packaging is not — a missing
+      dependency, a wrong option, a file in the wrong place — that belongs
+      in FreeBSD's Bugzilla against the www/nginx-module-* port.
