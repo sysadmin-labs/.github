@@ -10,8 +10,9 @@ Thirty-five repositories, thirty-seven modules -- `nginx-sts-module` and
 They all carry the same checks: the release matrix of nginx versions, a
 FreeBSD virtual machine, address and undefined behaviour sanitizers,
 valgrind, CodeQL, shellcheck and actionlint.  Most add eight reloads in a
-row and one gate that belongs to that module alone, from a hostile client
-to a collector that takes its datagrams apart.  Three have no reload gate:
+row and at least one gate that belongs to that module alone, from a
+hostile client to a collector that takes its datagrams apart.  Three have
+no reload gate:
 `nginx-fips-check-module` allocates nothing per cycle and answers no
 request, so there would be nothing to measure, while `nginx-ajp-module` and
 `nginx-tarantool-module` would each need a stand-in for a binary protocol
